@@ -8,13 +8,14 @@ const db = cloud.database();
 
 // 获取openId云函数入口函数
 exports.main = async (event, context) => {
-  
+  let payTime = Date.parse(new Date())
   try{
       await db.collection('order').where({
         orderNum: event.orderNum,
       }).update({
        data:{
-        state:1
+        state:1,
+        payTime:payTime
        }
       });
   return {

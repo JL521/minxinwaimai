@@ -14,7 +14,8 @@ exports.main = async (event, context) => {
         _id: event.id,
       }).update({
        data:{
-        state:4
+        state:4,
+        type:'user'
        }
       });
   return {

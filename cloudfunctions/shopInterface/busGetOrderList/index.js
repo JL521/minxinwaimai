@@ -15,9 +15,19 @@ exports.main = async (event, context) => {
   }
   
   try{
-    let res = await db.collection('order').where(map)
+    let res
+    if (map.state==4) {
+      res = await db.collection('order').where({
+        state:4,
+        type:'bus'
+      })
     .orderBy('createTime','desc')
     .get();
+    }else{
+      res = await db.collection('order').where(map)
+    .orderBy('createTime','desc')
+    .get();
+    }
   return {
     code: 0,
     data: res.data,

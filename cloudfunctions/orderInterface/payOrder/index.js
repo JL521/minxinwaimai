@@ -14,14 +14,14 @@ exports.main = async (event, context) => {
   let order = res.data[0]
   // 获取免鉴权支付参数
   const payMent = await cloud.cloudPay.unifiedOrder({
-    "body": order.info.body,
+    "body": order.body,
     "outTradeNo": order.outTradeNo,
     "spbillCreateIp": "127.0.0.1",
     "subMchId": "1626840615", // 商户号
     "totalFee": order.info.totalPrice * 100,
     "envId": "jl-test-7gyjr92k7b1e9164", // 云环境id
     "functionName": "payResult", // 支付回调云函数
-    "nonceStr":"5K8264ILTKCH16CQ2502SI8ZNMTM67VS",
+    "nonceStr":createOutTradeNo(),
     "tradeType":"JSAPI"
   })
  

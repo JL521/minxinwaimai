@@ -52,6 +52,7 @@ Page({
     let order = {};
     order.info = this.data
     order.orderNum = this.data.orderNum
+    order.body = "总计" + this.data.cars.length + '件商品'
     wxCloudAPI.request({
       showLoading:true,
       name:'orderInterface',

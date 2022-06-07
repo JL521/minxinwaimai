@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
       order.createTime = Date.parse(new Date())
       order.updateTime = Date.parse(new Date());
       order.delFlag = 0
-      order.state = 0 //0 待支付  1已支付等待商家确认 2商家已确认  3已完成 4 已取消
+      order.state = 0 //0 待支付  1已支付等待商家确认 2商家已确认  3已完成 4 已取消 
       const outTradeNo = createOutTradeNo() // 订单号
       order.outTradeNo = outTradeNo  
 
@@ -32,14 +32,14 @@ exports.main = async (event, context) => {
 
     }
     const payMent = await cloud.cloudPay.unifiedOrder({
-      "body": order.info.body,
+      "body": order.body,
       "outTradeNo": order.outTradeNo,
       "spbillCreateIp": "127.0.0.1",
       "subMchId": "1626840615", // 商户号
       "totalFee": order.info.totalPrice * 100,
       "envId": "jl-test-7gyjr92k7b1e9164", // 云环境id
       "functionName": "payResult", // 支付回调云函数
-      "nonceStr":"5K8264ILTKCH16CQ2502SI8ZNMTM67VS",
+      "nonceStr":createOutTradeNo(),
       "tradeType":"JSAPI"
     })
   return {

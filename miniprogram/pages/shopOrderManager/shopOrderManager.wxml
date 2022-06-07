@@ -5,6 +5,7 @@
   <van-tab title="待接单" name="1"></van-tab>
   <van-tab title="已接单" name="2"></van-tab>
   <van-tab title="已完成" name="3"></van-tab>
+  <van-tab title="已退款" name="4"></van-tab>
 </van-tabs>
 <view class="order-list">
 

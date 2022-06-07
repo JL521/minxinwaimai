@@ -82,7 +82,7 @@ Page({
     //秒  
     var s = date.getSeconds();  
     
-    console.log("当前时间：" +Y+M+D+h+":"+m+":"+s);  
+    console.log("当前时间：" +Y+'-'+M+'-'+D+'  '+h+":"+m+":"+s);  
 
 
     wxCloudAPI.request({
@@ -94,10 +94,10 @@ Page({
             value:'民心外卖'
           },
           phone_number3:{
-            value:'18865311316'
+            value:'15105314998'
           },
           time4:{
-            value:'2022-09-10 12:00'
+            value:Y+'-'+M+'-'+D+'  '+h+":"+m+":"+s
           },
         },
         templateId:'UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk',
@@ -111,6 +111,35 @@ Page({
     })
   },
 
+  async cancleOrder(){
+    let that = this
+    const model = await wx.showModal({
+      title: '提示',
+      content: '确认取消订单并退款',
+      confirmText: '取消退款'
+    })
+    if (model.confirm){
+      wxCloudAPI.request({
+        showLoading:true,
+        name:'shopInterface',
+        data:{
+          type: 'busCancleOrder',
+          id:that.data.orderInfo._id,
+        },
+        success(resp){
+          wx.showToast({
+            title: '成功',
+            success(){
+              setTimeout(function () {
+                wx.navigateBack()
+              }, 2000) 
+            }
+          })
+        },
+      })
+    }
+   
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
