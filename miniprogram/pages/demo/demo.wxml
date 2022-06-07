@@ -1,0 +1,55 @@
+<view class="container">
+	<view bindtap="goShop" class="shop-info">
+	<view>
+	<image class="shop-banner" src="{{shopInfo.imgUrl}}" alt=""/>
+	</view>
+<view class="shop-des">
+	<view class="shop-des-top">
+		<view class="shop-des-title">{{shopInfo.name}}</view>
+	  <view class="shop-des-phone">{{shopInfo.phone}}</view>
+	</view>
+  <view class="shop-des-add">{{shopInfo.address}}</view>
+</view>
+</view>
+<view class="link">
+	<!-- 左边 -->
+	<scroll-view class="left" scroll-y scroll-with-animation scroll-top="{{scrollTops}}">
+		<view class="item {{tabCur===index?'active':''}}" wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="tabNav">{{item.name}}</view>
+	</scroll-view>
+	<!-- 右边 -->
+	<scroll-view class="right" scroll-y scroll-with-animation scroll-into-view="scroll-{{rightCur}}" bindscroll="scrollLink">
+		<view wx:for="{{list}}" wx:key="index"  class="right-cont" id="scroll-{{index}}">
+			<view class="content">
+				<view class="list-item" wx:key="indexs" wx:for="{{item.list}}" wx:for-index="indexs" wx:for-item="items">
+				<view>
+				<image class="item-img" src="{{items.imgUrl}}" alt=""/>
+				</view>
+				<view class="item-info">
+					<view class="item-info-title">{{items.name}}</view>
+					<view class="item-info-sale">月售 {{items.saleCount}}</view>
+			<view class="item-price">
+				<view class="item-price-m">￥{{items.price}}</view>
+				<view bindtap="del" data-item="{{items}}" data-index="{{index}}" data-indexs="{{indexs}}"  class="item-price-a">-</view>
+				<view class="item-num"> {{items.num}} </view>
+				<view bindtap="add" data-item="{{items}}" data-index="{{index}}" data-indexs="{{indexs}}" class="item-price-a">+</view>
+			</view>
+				</view>
+				</view>
+			</view>
+		</view>
+		<view class="safe-area"></view>
+	</scroll-view>
+	<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 60%;"
+  bind:close="onClose">
+<shop-car bind:add="add" bind:del = "del" list="{{selectList}}"></shop-car>
+</van-popup>
+	<view bindtap="goShopCar" class="shop-car">
+		<van-icon name="shopping-cart-o" info="{{totalCount<=0?'':totalCount}}" size="30px" color="white"/>
+		<view class="total-money">总计 ￥{{totalPrice}}</view>
+		<view catchtap="goOrder" class="go-order">去结算</view>
+	</view>
+</view>
+</view>

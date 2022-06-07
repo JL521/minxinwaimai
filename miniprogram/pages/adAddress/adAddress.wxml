@@ -1,0 +1,59 @@
+<!--pages/adAddress/adAddress.wxml-->
+<view class="ad-address">
+  <view class="my-info">
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.name }}"
+    clearable
+    label="姓名"
+    placeholder="请输入姓名"    
+    left-icon="contact"
+    bind:change="valueChange"
+    id="name"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.phone }}"
+    type="number"
+    label="联系方式"
+    placeholder="请输入手机号"
+    left-icon="phone-o"
+    bind:change="valueChange"
+    id="phone"
+    maxlength="11"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.address }}"
+    label="地址"
+    placeholder="请输入地址"
+    type="textarea"
+    autosize
+    use-button-slot
+    left-icon="location-o"
+    bind:change="valueChange"
+    id="address"
+  >
+  <view bindtap="chooseAddress" class="shoose-addres" slot="button">
+      选择地址
+    </view>
+  </van-field>
+  <van-field
+   title-width="120rpx"
+    value="{{addressInfo.detailAddress }}"
+    label="详细地址"
+    type="textarea"
+    left-icon="info-o"
+    autosize
+    placeholder="请输入详细地址(单元楼、门牌号)"
+    border="{{ false }}"
+    bind:change="valueChange"
+    id="detailAddress"
+  />
+</view>
+</view>
+<view wx:if="{{addressInfo._id==undefined}}" class="ad-adress-btn" bindtap="adAddress">保存地址</view>
+<view wx:else class="ad-del-adress-btn">
+<view class="ad-del" bindtap="delAddress">删除地址</view>
+<view class="ad-add" bindtap="adAddress">保存地址</view>
+</view>

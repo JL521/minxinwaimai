@@ -1,0 +1,30 @@
+<!-- 引入wxs文件 -->
+<wxs src="../../util/util.wxs" module="Time" />
+<view class="orderList">
+  <van-tabs swipeable bind:change="onChange">
+  <van-tab title="待支付"></van-tab>
+  <van-tab title="待接单"></van-tab>
+  <van-tab title="已接单"></van-tab>
+  <van-tab title="已完成"></van-tab>
+  <van-tab title="已取消"></van-tab>
+</van-tabs>
+<view class="order-list">
+
+<view bindtap="goDetail" data-item="{{item}}" wx:for="{{orders}}" class="order-item">
+
+<view class="item-row">
+  <view class="item-key">订单编号</view>
+<view class="item-value">{{item.orderNum}}</view>
+</view>
+<view class="item-row item-time">
+  <view class="item-key">下单时间</view>
+<view class="item-value">{{Time.time_format(item.createTime)}}</view>
+</view>
+<view class="item-row">
+  <view class="item-key">支付金额</view>
+<view class="item-value money">￥{{item.info.totalPrice}}</view>
+</view>
+</view>
+
+</view>
+</view>

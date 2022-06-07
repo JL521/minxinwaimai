@@ -1,0 +1,19 @@
+<view class="add-kind">
+  <van-cell-group>
+    <van-field
+   title-width="120rpx"
+    value="{{ footKind.name }}"
+    clearable
+    label="品类名"
+    placeholder="请输入品类名"    
+    bind:change="valueChange"
+    id="name"
+  />
+  </van-cell-group>
+<view class="kind-state"> 
+  <view>是否上架</view>
+  <van-switch  active-color="rgb(105, 60, 213)" inactive-color="#ee0a24" checked="{{ footKind.state == 1 }}" bind:change="onChange" />
+</view>
+
+</view>
+<view class="save-btn" bindtap="save">保存品类</view>

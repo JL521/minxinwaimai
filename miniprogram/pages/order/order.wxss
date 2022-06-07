@@ -1,0 +1,62 @@
+.order{
+  padding: 20px;
+}
+.default-address{
+  text-align: right;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  color: #333;
+}
+.my-info{
+  background-color: white;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.shoose-addres{
+  color: #7B68EE;
+  font-weight: 500;
+}
+
+.goods-des{
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.order-info{
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.goods-info{
+  background-color: white;
+  margin-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  height: 120rpx;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 120rpx;
+  background-color: rgb(184, 156, 258);
+  border-radius: 120rpx;
+}
+.price-total{
+  font-size: 12pt;
+  font-weight: 500;
+  color: white;
+  padding: 0 20px;
+}
+
+.submint-btn{
+  width: 300rpx;
+  background-color: rgb(105, 60, 213);
+  border-bottom-right-radius: 120rpx;
+  border-top-right-radius: 120rpx;
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+/* pages/shopFoodKindManager/shopFoodKindManager.wxss */
+.shop-kind{
+  padding: 20px;
+  padding-bottom: 100px;
+}
+.kind-item{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.ad-foot-btn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120rpx;
+  background-color:  rgb(105, 60, 213);
+  text-align: center;
+  line-height: 120rpx;
+  color: white;
+  font-weight: 500;
+  z-index: 99;
+}

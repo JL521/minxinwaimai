@@ -1,0 +1,43 @@
+<view class="add-kind">
+  <view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{columns}}">
+    <view class="picker">
+      当前选择：{{columns[index]}}
+    </view>
+  </picker>
+  </view>
+
+  <image class="avatarUrl" bindtap="chooseImg" src="{{foodInfo.imgUrl}}"></image>
+  <van-cell-group>
+    <van-field
+   title-width="120rpx"
+    value="{{ foodInfo.name }}"
+    clearable
+    label="菜品名称"
+    placeholder="请输入菜品名称"    
+    bind:change="valueChange"
+    id="name"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ foodInfo.price }}"
+    clearable
+    label="菜品价格"
+    placeholder="请输入菜品价格"    
+    bind:change="valueChange"
+    id="price"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ foodInfo.saleCount }}"
+    clearable
+    label="菜品月售"
+    placeholder="请输入菜品月售"    
+    bind:change="valueChange"
+    id="saleCount"
+  />
+  </van-cell-group>
+  <view>菜品状态</view>
+  <van-switch  active-color="rgb(105, 60, 213)" inactive-color="#ee0a24" checked="{{ foodInfo.state == 1 }}" bind:change="onStateChange" />
+</view>
+<view class="ad-foot-btn" bindtap="save">保存菜品</view>

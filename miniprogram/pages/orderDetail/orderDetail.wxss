@@ -1,0 +1,71 @@
+.order{
+  padding: 20px;
+}
+.default-address{
+  text-align: right;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  color: #333;
+}
+.my-info{
+  background-color: white;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.shoose-addres{
+  color: #7B68EE;
+  font-weight: 500;
+}
+
+.goods-des{
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.order-info{
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.daizhifu{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cancle{
+  padding: 0 20px;
+  border: 1px solid rgb(184, 156, 258);
+  color:rgb(105, 60, 213);
+  border-radius: 80rpx;
+}
+
+.zhifu{
+  padding: 0 20px;
+  color: white;
+  border-radius: 80rpx;
+  background-color:  rgb(105, 60, 213);
+}
+
+.lx-sj{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120rpx;
+  background-color:  rgb(105, 60, 213);
+  text-align: center;
+  line-height: 120rpx;
+  color: white;
+  font-weight: 500;
+}

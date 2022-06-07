@@ -1,0 +1,83 @@
+<!--pages/order/order.wxml-->
+<view class="order">
+  <view class="my-info">
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.name }}"
+    clearable
+    disabled
+    label="姓名"
+    placeholder="请输入姓名"    
+    left-icon="contact"
+    bind:change="valueChange"
+    id="name"
+  />
+  <van-field
+  disabled
+   title-width="120rpx"
+    value="{{ addressInfo.phone }}"
+    type="number"
+    label="联系方式"
+    placeholder="请输入手机号"
+    left-icon="phone-o"
+    bind:change="valueChange"
+    id="phone"
+    maxlength="11"
+  />
+  <van-field
+  disabled
+   title-width="120rpx"
+    value="{{ addressInfo.address }}"
+    label="地址"
+    placeholder="请输入地址"
+    type="textarea"
+    autosize
+    left-icon="location-o"
+    bind:change="valueChange"
+    id="address"
+  >
+  </van-field>
+  <van-field
+  disabled
+   title-width="120rpx"
+    value="{{addressInfo.detailAddress }}"
+    label="详细地址"
+    type="textarea"
+    left-icon="info-o"
+    autosize
+    placeholder="请输入详细地址(单元楼、门牌号)"
+    border="{{ false }}"
+    bind:change="valueChange"
+    id="detailAddress"
+  />
+</view>
+<view class="goods-des">
+  <van-field
+  disabled
+  left-icon="comment-o"
+    value="{{ message }}"
+    label="备注"
+    type="textarea"
+    placeholder="请输入留言"
+    autosize
+    title-width="120rpx"
+    custom-style="height:160rpx"
+    bind:change="valueChange"
+    id="message"
+  />
+</view>
+<view class="order-info">
+  <shop-car isOrder = "true" list="{{cars}}"></shop-car>
+</view>
+<view class="bottom">
+
+<view wx:if="{{orderInfo.state==1}}" class="daizhifu">
+<view bindtap="submitOrder" data-info="{{orderInfo}}" class="zhifu">接单</view>
+</view>
+
+<view wx:if="{{orderInfo.state==2}}" class="daizhifu">
+<view bindtap="submitOrder" data-info="{{orderInfo}}" class="zhifu">完成</view>
+</view>
+
+</view>
+</view>

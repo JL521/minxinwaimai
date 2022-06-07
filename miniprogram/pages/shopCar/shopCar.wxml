@@ -1,0 +1,21 @@
+<!--pages/shopCar/shopCar.wxml-->
+<view>
+  <view class="content">
+				<view class="list-item" wx:key="indexs" wx:for="{{list}}" wx:for-index="indexs" wx:for-item="items">
+				<view>
+				<image class="item-img" src="{{items.imgUrl}}" alt=""/>
+				</view>
+				<view class="item-info">
+					<view class="item-info-title">{{items.name}}</view>
+			<view class="item-price">
+				<view class="item-price-m">￥{{items.price * items.num}}</view>
+				<view wx:if="{{!isOrder}}" bindtap="del" data-item="{{items}}" class="item-price-a">-</view>
+				<view  wx:if="{{!isOrder}}" class="item-num">{{items.num}}  </view>
+				<view wx:if="{{!isOrder}}" bindtap="add" data-item="{{items}}" class="item-price-a">+</view>
+			
+			</view>
+				</view>
+				<view class="order-num" wx:if="{{isOrder}}">X{{items.num}} 份</view>
+				</view>
+			</view>
+</view>

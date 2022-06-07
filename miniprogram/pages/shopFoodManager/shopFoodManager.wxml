@@ -1,0 +1,10 @@
+<view class="shop-foot">
+<view bindtap="addKind" data-item="{{item}}" class="foot-item" wx:for="{{list}}" wx:key="_id">
+<image class="foot-img" src="{{item.imgUrl}}"></image>
+<view>菜品名称 {{item.name}}</view>
+<view>菜品价格 {{item.price}}</view>
+<view>菜品月售 {{item.saleCount}}</view>
+<view>菜品状态:{{item.state == 1 ? '上架中':'已下架'}}</view>
+</view>
+</view>
+<view class="ad-foot-btn" bindtap="addKind">新增菜品</view>

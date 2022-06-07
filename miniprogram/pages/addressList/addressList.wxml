@@ -1,0 +1,21 @@
+<view class="ad-list">
+  <view bindtap="chooseAddress" data-item="{{item}}" class="ad-item" wx:for="{{addressList}}">
+
+<view class="ad-item-colum">
+  <view class="ad-item-ad ad-item-b">
+  <view class="ad-ad item-b">{{item.address}}</view>
+  <view class="ad-ad-d item-b">{{item.detailAddress}}</view>
+</view>
+
+<view class="ad-item-info ad-item-b">
+  <view class="ad-name item-b">{{item.name}}</view>
+<view class="ad-phone item-b">{{item.phone}}</view>
+</view>
+</view>
+<view capture-catch:tap="editAdress" data-item="{{item}}" class="ad-edit">
+  <van-icon name="edit" size="25px" color="rgb(184, 156, 258)" />
+</view>
+
+</view>
+</view>
+<view class="ad-adress-btn" bindtap="adAddress">新增地址</view>

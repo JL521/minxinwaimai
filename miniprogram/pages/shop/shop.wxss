@@ -1,0 +1,37 @@
+/* pages/shop/shop.wxss */
+.shop-top{
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+}
+.shop-banner{
+  height: 60px;
+  width: 60px;
+  border-radius: 2px;
+}
+.shop-des{
+  margin-left: 20px;
+  font-size: 12pt;
+  color:#333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.shop-des-top{
+  display: flex;
+}
+.shop-des-title{
+  font-size: 14pt;
+  font-weight: 400;
+}
+.shop-des-phone{
+  margin-left: 10px;
+  font-weight: 400;
+  color: #333;
+}
+.shop-des-add{
+  font-size: 10pt;
+  color: #666;
+}

@@ -1,0 +1,6 @@
+<view class="mkxcx">
+  <button bindtap="callPhone" type="primary">电话联系</button>
+<button type="warn" open-type="contact" bindtap="toContact">在线客服</button>
+<!-- <button bindtap="submessage" type="primary">订阅消息</button>
+<button bindtap="sendsubmessage" type="primary">发布订阅消息</button> -->
+</view>

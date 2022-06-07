@@ -1,0 +1,77 @@
+<!--pages/order/order.wxml-->
+<view class="order">
+  <view bindtap="goAdList" class="default-address">选择默认地址</view>
+  <view class="my-info">
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.name }}"
+    clearable
+    label="姓名"
+    placeholder="请输入姓名"    
+    left-icon="contact"
+    bind:change="valueChange"
+    id="name"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.phone }}"
+    type="number"
+    label="联系方式"
+    placeholder="请输入手机号"
+    left-icon="phone-o"
+    bind:change="valueChange"
+    id="phone"
+    maxlength="11"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ addressInfo.address }}"
+    label="地址"
+    placeholder="请输入地址"
+    type="textarea"
+    autosize
+    use-button-slot
+    left-icon="location-o"
+    bind:change="valueChange"
+    id="address"
+  >
+  <view bindtap="chooseAddress" class="shoose-addres" slot="button">
+      选择地址
+    </view>
+  </van-field>
+  <van-field
+   title-width="120rpx"
+    value="{{addressInfo.detailAddress }}"
+    label="详细地址"
+    type="textarea"
+    left-icon="info-o"
+    autosize
+    placeholder="请输入详细地址(单元楼、门牌号)"
+    border="{{ false }}"
+    bind:change="valueChange"
+    id="detailAddress"
+  />
+</view>
+
+<view class="goods-des">
+  <van-field
+  left-icon="comment-o"
+    value="{{ message }}"
+    label="备注"
+    placeholder="请输入留言"
+    title-width="120rpx"
+    type="textarea"
+    autosize
+    custom-style="height:160rpx"
+    bind:change="valueChange"
+    id="message"
+  />
+</view>
+<view class="order-info">
+  <shop-car isOrder = "true" list="{{cars}}"></shop-car>
+</view>
+<view class="goods-info">
+  <view class="price-total">总计 ￥{{totalPrice}}</view>
+  <view bindtap="submitOrder" class="submint-btn">提交订单</view>
+</view>
+</view>

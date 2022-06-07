@@ -1,0 +1,99 @@
+/* pages/shopManager/shopManager.wxss */
+.login-info{
+  margin-top: 20px;
+}
+.login{
+  margin-top: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+  background-color: rgb(105, 60, 213);
+  color: white;
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 40px;
+}
+.login-desc{
+  padding: 20px;
+  margin-top: 50px;
+  font-size: 10pt;
+  color: #999;
+}
+
+
+
+.min{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.min-info{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.min-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #eee;
+}
+
+.nick-name{
+  font-size: 14pt;
+  color: #333;
+  font-weight: 500;
+}
+
+.shop-state{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.state-text{
+  font-size: 12pt;
+  color: #333;
+  line-height: 20px;
+  padding-bottom: 5px;
+  margin-right: 10px;
+}
+
+
+.no-login{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  background-color: rgb(184, 156, 258);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.min-body{
+  flex: 1;
+  /* background-color: #f6f6f6; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+.min-body-item{
+ height: 30vw;
+ width:40vw;
+ background-color: white;
+ margin: 10px;
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ justify-content: space-around;
+ color: #333;
+}

@@ -1,0 +1,64 @@
+<view class="shop-info">
+  
+  <view bindtap="chooseImg" class="shop-banner">
+    <view>上传商家图片</view>
+    <image class="banner-img"  src="{{shopInfo.imgUrl}}"></image>
+  </view>
+  
+  <van-cell-group>
+    <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.name }}"
+    clearable
+    label="店铺名称"
+    placeholder="请输入店铺名称"    
+    bind:change="valueChange"
+    id="name"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.phone }}"
+    clearable
+    label="联系方式"
+    placeholder="请输入联系方式"    
+    bind:change="valueChange"
+    id="phone"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.address }}"
+    clearable
+    type="textarea"
+    autosize
+    label="店铺地址"
+    placeholder="请输入店铺地址"    
+    bind:change="valueChange"
+    id="address"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.time }}"
+    clearable
+    label="营业时间"
+    placeholder="请输入营业时间"    
+    bind:change="valueChange"
+    id="time"
+  />
+
+  <van-field
+   title-width="120rpx"
+   type="textarea"
+    autosize
+    value="{{ shopInfo.serviceAddress }}"
+    clearable
+    label="配送范围"
+    placeholder="请输入配送范围"    
+    bind:change="valueChange"
+    id="serviceAddress"
+  />
+  
+
+  </van-cell-group>
+  
+</view>
+<view class="save-btn" bindtap="save">保存店铺</view>

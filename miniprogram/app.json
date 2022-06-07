@@ -1,0 +1,70 @@
+{
+  "pages": [
+    
+    "pages/shopManager/shopManager",
+    "pages/demo/demo",
+    "pages/min/min",
+    "pages/shopCar/shopCar",
+    "pages/order/order",
+    "pages/shop/shop",
+    "pages/adAddress/adAddress",
+    "pages/index/index",
+    "pages/addressList/addressList",
+    "pages/orderList/orderList",
+    "pages/orderDetail/orderDetail",
+    "pages/mkxcx/mkxcx",
+    "pages/shopInfoEdit/shopInfoEdit",
+    "pages/shopOrderManager/shopOrderManager",
+    "pages/shopOrderDetail/shopOrderDetail",
+    "pages/shopFoodKindManager/shopFoodKindManager",
+    "pages/shopFoodManager/shopFoodManager",
+    "pages/addShopFoodKind/addShopFoodKind",
+    "pages/addShopFood/addShopFood",
+
+    "pages/getOpenId/index",
+    "pages/getMiniProgramCode/index",
+    "pages/deployService/index",
+    "pages/createCollection/index",
+    "pages/uploadFile/index",
+    "pages/selectRecord/index",
+    "pages/updateRecord/index",
+    "pages/updateRecordResult/index",
+    "pages/updateRecordSuccess/index",
+    "pages/sumRecord/index",
+    "pages/sumRecordResult/index"
+  ],
+  "window": {
+    "backgroundColor": "#7B68EE",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#7B68EE",
+    "navigationBarTitleText": "民心外卖",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#7B68EE",
+    "list": [
+      {
+        "pagePath": "pages/demo/demo",
+        "text": "点餐"
+      },
+      {
+        "pagePath": "pages/min/min",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/shopManager/shopManager",
+        "text": "我的店铺"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取当前位置信息，填写收货地址"
+    }
+  },
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

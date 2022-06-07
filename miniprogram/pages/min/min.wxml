@@ -1,0 +1,29 @@
+<view class="min">
+<view bindtap="getInfo" class="min-info">
+<view wx:if="{{isInfo}}">
+  <image class="min-img" src="{{userInfo.avatarUrl}}" alt="用户头像"/>
+   <view class="nick-name">{{userInfo.nickName}}</view>
+</view>
+<view wx:else class="no-login">授权登录</view>
+</view>
+
+<view class="min-body">
+  <view bindtap="toDetail" data-type="1" class="min-body-item">
+    <van-icon name="cart-circle-o" size="40px" color="rgb(184, 156, 258)"/>
+    <view>我的订单</view>
+  </view>
+  <view bindtap="toDetail" data-type="2" class="min-body-item">
+    <van-icon size="40px" name="location-o" color="rgb(184, 156, 258)"/>
+    <view>我的收货地址</view>
+  </view>
+  <view bindtap="toDetail" data-type="3" class="min-body-item">
+    <van-icon size="40px" name="phone-circle-o" color="rgb(184, 156, 258)"/>
+    <view>联系商家</view>
+  </view>
+  <view bindtap="toDetail" data-type="4" class="min-body-item">
+    <van-icon size="40px" name="cashier-o" color="rgb(184, 156, 258)" />
+    <view>我也制作小程序</view>
+  </view>
+</view>
+
+</view>
