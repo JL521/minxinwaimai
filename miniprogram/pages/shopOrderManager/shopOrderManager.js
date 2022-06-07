@@ -10,7 +10,7 @@ Page({
     state:1,
     orders:[],
     pageNum:0,
-    pageSize:10
+    pageSize:100
   },
 
   onPullDownRefresh:function(){
@@ -31,7 +31,8 @@ Page({
 
   onChange(event){
     this.setData({
-      state:event.detail.name
+      state:event.detail.name,
+      pageNum:0
     })
     this.getList()
   },
@@ -41,17 +42,25 @@ Page({
     wxCloudAPI.request({
       showLoading:true,
       name:'shopInterface',
-      pageNum:this.data.pageNum,
-      pageSize:this.data.pageSize,
       data:{
         type: 'busGetOrderList',
-        state:that.data.state-0
+        state:that.data.state-0,
+        pageNum:this.data.pageNum,
+        pageSize:this.data.pageSize
       },
       success(resp){
         wx.stopPullDownRefresh()
-         that.setData({
-           orders:resp.data
-         })
+         if(that.data.pageNum==0){
+          that.setData({
+            orders:resp.data
+          })
+        }else{
+          that.data.orders = that.data.orders.concat(resp.data)
+          that.setData({
+            orders:that.data.orders
+          })
+        }   
+
       },
     })
   },
@@ -95,20 +104,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

@@ -56,34 +56,16 @@ Page({
             setTimeout(function () {
               wx.navigateBack()
             }, 2000) 
-          }
-        })
-      },
-    })
 
-    //获取当前时间戳  
-    var timestamp = Date.parse(new Date());  
-    timestamp = timestamp / 1000;  
-    console.log("当前时间戳为：" + timestamp);  
-  
-//获取当前时间  
-    var n = timestamp * 1000;  
-    var date = new Date(n);  
-    //年  
-    var Y = date.getFullYear();  
-    //月  
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);  
-    //日  
-    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();  
-    //时  
-    var h = date.getHours();  
-    //分  
-    var m = date.getMinutes();  
-    //秒  
-    var s = date.getSeconds();  
-    
-    console.log("当前时间：" +Y+'-'+M+'-'+D+'  '+h+":"+m+":"+s);  
-
+            var tme = new Date();  
+    var Y = tme.getFullYear();
+    var M = (tme.getMonth() + 1 < 10 ? '0' + (tme.getMonth() + 1) : tme.getMonth() + 1);
+    var D = tme.getDate() < 10 ?'0' + tme.getDate():tme.getDate();
+    var h = tme.getHours() < 10 ?'0' + tme.getHours():tme.getHours();
+    var m = tme.getMinutes()< 10 ?'0' + tme.getMinutes():tme.getMinutes();
+    var s = tme.getSeconds()< 10 ?'0' + tme.getSeconds():tme.getSeconds();
+    let tem1 = Y + '-' + M + '-' + D + ' ' + h + ':' + m + ':' + s
+    console.log("当前时间：" +tem1);  
 
     wxCloudAPI.request({
       showLoading:true,
@@ -97,7 +79,7 @@ Page({
             value:'15105314998'
           },
           time4:{
-            value:Y+'-'+M+'-'+D+'  '+h+":"+m+":"+s
+            value:tem1
           },
         },
         templateId:'UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk',
@@ -106,6 +88,11 @@ Page({
       success(resp){
         wx.showToast({
           title: '成功',
+        })
+      },
+    })
+
+          }
         })
       },
     })

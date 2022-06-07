@@ -21,10 +21,14 @@ exports.main = async (event, context) => {
         state:4,
         type:'bus'
       })
+      .skip(event.pageNum * event.pageSize)
+    .limit(event.pageSize)
     .orderBy('createTime','desc')
     .get();
     }else{
       res = await db.collection('order').where(map)
+      .skip(event.pageNum * event.pageSize)
+    .limit(event.pageSize)
     .orderBy('createTime','desc')
     .get();
     }

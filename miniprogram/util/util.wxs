@@ -7,10 +7,10 @@ function time_format(time) {
   }
   var Y = tme.getFullYear();
   var M = (tme.getMonth() + 1 < 10 ? '0' + (tme.getMonth() + 1) : tme.getMonth() + 1);
-  var D = tme.getDate();
-  var h = tme.getHours();
-  var m = tme.getMinutes();
-  var s = tme.getSeconds();
+  var D = tme.getDate() < 10 ?'0' + tme.getDate():tme.getDate();
+  var h = tme.getHours() < 10 ?'0' + tme.getHours():tme.getHours();
+  var m = tme.getMinutes()< 10 ?'0' + tme.getMinutes():tme.getMinutes();
+  var s = tme.getSeconds()< 10 ?'0' + tme.getSeconds():tme.getSeconds();
   tem1 = Y + '-' + M + '-' + D + ' ' + h + ':' + m + ':' + s
   return tem1;
 }

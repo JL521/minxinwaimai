@@ -10,7 +10,11 @@ Page({
     cars:[],
     addressInfo:{},
     message:'',
-    orderNum:''
+    orderNum:'',
+    minDate: new Date().getTime(),
+    maxDate: new Date(2099, 10, 1).getTime(),
+    expectTime: new Date().getTime()+40*60*1000,
+    show:false
   },
 
   /**
@@ -20,6 +24,27 @@ Page({
     this.setData({
       totalPrice:options.totalPrice,
       cars:getApp().globalData.cars,
+    })
+    console.log('==',this.data)
+  },
+
+  chooseTime(){
+    this.setData({
+      show:true
+    })
+  },
+
+  onInput(event) {
+    console.log('选择的时间=='+event.detail)
+    this.setData({
+      expectTime: event.detail,
+      show:false
+    });
+  },
+
+  onClose(){
+    this.setData({
+      show:false
     })
   },
 
@@ -45,10 +70,19 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
         success(res){
-          console.log('===========',res)
+          that.createOrder()
+        },
+        fail(){
+          that.createOrder()
         }
       })
+    }else{
+      this.createOrder()
     }
+    
+  },
+
+  createOrder(){
     let order = {};
     order.info = this.data
     order.orderNum = this.data.orderNum

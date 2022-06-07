@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
     });
     return {
       code: 0,
-      data: null,
+      data: sendmsg,
       msg: '发布成功~',
     };
   }catch(e){

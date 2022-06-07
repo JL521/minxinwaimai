@@ -43,7 +43,7 @@ Page({
   toDetail(e){
     if(this.data.isInfo==false){
       wx.showToast({
-        title: '请先登录~',
+        title: '请先点击头像登录~',
         icon:'none'
       })
       return;

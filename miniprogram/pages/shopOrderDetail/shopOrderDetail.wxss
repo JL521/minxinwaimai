@@ -24,6 +24,16 @@
   margin-bottom: 10px;
 }
 
+.expectTime{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 15px;
+  font-size: 10pt;
+  color: #333;
+  margin-bottom: 10px;
+}
+
 .order-info{
   padding: 10px;
   border-radius: 4px;

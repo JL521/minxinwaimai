@@ -1,4 +1,5 @@
 <!--pages/order/order.wxml-->
+<wxs src="../../util/util.wxs" module="Time" />
 <view class="order">
   <view bindtap="goAdList" class="default-address">选择默认地址</view>
   <view class="my-info">
@@ -47,10 +48,19 @@
     left-icon="info-o"
     autosize
     placeholder="请输入详细地址(单元楼、门牌号)"
-    border="{{ false }}"
+    border = "{{ false }}"
     bind:change="valueChange"
     id="detailAddress"
   />
+</view>
+
+<view bindtap="chooseTime" class="expectTime">
+<view>
+  选择预期送达时间
+</view>
+<view>
+  {{Time.time_format(expectTime)}}
+</view>
 </view>
 
 <view class="goods-des">
@@ -75,3 +85,23 @@
   <view bindtap="submitOrder" class="submint-btn">提交订单</view>
 </view>
 </view>
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onClose"
+>
+<van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:confirm="onInput"
+  bind:cancel="onClose"
+/>
+</van-popup>
+
+
+
+

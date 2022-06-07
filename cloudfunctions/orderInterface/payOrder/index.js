@@ -31,5 +31,14 @@ exports.main = async (event, context) => {
     msg:'成功~'
   }
 };
-
+const createOutTradeNo = () => {
+  let outTradeNo = new Date().getTime() // 获取当前13位时间戳
+  let numStr = '0123456789';
+  let randomStr = '';
+  for (let i = (32 - 13); i > 0; --i) {
+    randomStr += numStr[Math.floor(Math.random() * numStr.length)];
+  }
+  outTradeNo += randomStr
+  return outTradeNo
+}
 

@@ -8,12 +8,15 @@ Page({
    */
   data: {
     state:0,
-    orders:[]
+    orders:[],
+    pageNum:0,
+    pageSize:100
   },
 
   onChange(event){
     this.setData({
-      state:event.detail.name
+      state:event.detail.name,
+      pageNum:0
     })
     this.getList()
   },
@@ -25,14 +28,40 @@ Page({
       name:'orderInterface',
       data:{
         type: 'orderList',
-        state:that.data.state
+        state:that.data.state,
+        pageNum:this.data.pageNum,
+        pageSize:this.data.pageSize,
       },
       success(resp){
-         that.setData({
-           orders:resp.data
-         })
+        wx.stopPullDownRefresh()
+        if(that.data.pageNum==0){
+          that.setData({
+            orders:resp.data
+          })
+        }else{
+          that.data.orders = that.data.orders.concat(resp.data)
+          that.setData({
+            orders:that.data.orders
+          })
+        }         
       },
     })
+  },
+
+  onPullDownRefresh:function(){
+    this.data.pageNum = 0
+    this.setData({
+      pageNum:0
+    })
+    this.getList()
+  },
+
+  onReachBottom(){
+    this.data.pageNum++
+    this.setData({
+      pageNum:this.data.pageNum
+    })
+    this.getList()
   },
 
   goDetail(e){
@@ -77,19 +106,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享

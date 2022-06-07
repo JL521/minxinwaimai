@@ -17,6 +17,8 @@ exports.main = async (event, context) => {
 
   try{
     let res = await db.collection('order').where(map)
+    .skip(event.pageNum * event.pageSize)
+    .limit(event.pageSize)
     .orderBy('createTime','desc')
     .get();
   return {

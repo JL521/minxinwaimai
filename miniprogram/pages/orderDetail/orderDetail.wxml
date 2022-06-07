@@ -1,4 +1,5 @@
 <!--pages/order/order.wxml-->
+<wxs src="../../util/util.wxs" module="Time" />
 <view class="order">
   <view class="my-info">
   <van-field
@@ -51,6 +52,16 @@
     id="detailAddress"
   />
 </view>
+
+<view class="expectTime">
+<view>
+  预期送达时间
+</view>
+<view>
+  {{Time.time_format(orderInfo.info.expectTime-0)}}
+</view>
+</view>
+
 <view class="goods-des">
   <van-field
   disabled

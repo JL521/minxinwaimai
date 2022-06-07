@@ -52,6 +52,16 @@
   padding: 0 20px;
 }
 
+.expectTime{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 15px;
+  font-size: 10pt;
+  color: #333;
+  margin-bottom: 10px;
+}
+
 .submint-btn{
   width: 300rpx;
   background-color: rgb(105, 60, 213);
