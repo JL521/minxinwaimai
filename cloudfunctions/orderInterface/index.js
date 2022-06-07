@@ -3,6 +3,7 @@ const orderList = require('./orderList/index')
 const orderDetail = require('./orderDetail/index')
 const cancleOrder = require('./cancleOrder/index')
 const payOrder = require('./payOrder/index')
+const paySuccessOrder = require('./paySuccessOrder/index')
 
 
 // 云函数入口函数
@@ -18,6 +19,8 @@ exports.main = async (event, context) => {
       return await cancleOrder.main(event,context)
     case 'payOrder':
       return await payOrder.main(event,context)
+    case 'paySuccessOrder':
+      return await paySuccessOrder.main(event,context)
   }
 
   return {

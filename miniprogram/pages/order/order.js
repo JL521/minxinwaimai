@@ -9,7 +9,8 @@ Page({
     totalPrice:0,
     cars:[],
     addressInfo:{},
-    message:''
+    message:'',
+    orderNum:''
   },
 
   /**
@@ -36,16 +37,21 @@ Page({
   },
 
   submitOrder(){
-    wx.requestSubscribeMessage({
-      tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
-      success(res){
-        console.log('===========',res)
-      }
-    })
+    let that = this
+    if(this.data.orderNum==''){
+      this.setData({
+        orderNum:this.getOrderCode()
+      })
+      wx.requestSubscribeMessage({
+        tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
+        success(res){
+          console.log('===========',res)
+        }
+      })
+    }
     let order = {};
     order.info = this.data
-    order.orderNum = this.getOrderCode()
-    console.log('submitOrder==',order)
+    order.orderNum = this.data.orderNum
     wxCloudAPI.request({
       showLoading:true,
       name:'orderInterface',
@@ -55,18 +61,27 @@ Page({
       },
       success(resp){
         getApp().globalData.cars=[]
-
         wx.requestPayment(
           {
            ...resp.data,
            success(res){
-            wx.showToast({
-              title: '提交成功',
-              success(){
-                setTimeout(function () {
-                  wx.navigateBack()
-                }, 2000) 
-              }
+            wxCloudAPI.request({
+              showLoading:true,
+              name:'orderInterface',
+              data:{
+                type: 'paySuccessOrder',
+                orderNum:that.data.orderNum
+              },
+              success(resp){
+                wx.showToast({
+                  title: '提交成功',
+                  success(){
+                    setTimeout(function () {
+                      wx.navigateBack()
+                    }, 2000) 
+                  }
+                })
+              },
             })
            },
            fail(err){

@@ -10,18 +10,30 @@ const db = cloud.database();
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
   let order = event.order
-  order.openId = wxContext.OPENID
-  order.createTime = Date.parse(new Date())
-  order.updateTime = Date.parse(new Date());
-  order.delFlag = 0
-  order.state = 0 //0 待支付  1已支付等待商家确认 2商家已确认  3已完成 4 已取消
-  const outTradeNo = createOutTradeNo() // 订单号
-  order.outTradeNo = outTradeNo  
+  
   try{
+    let res = await db.collection('order').where({
+      orderNum:order.orderNum
+    }).get();
+    if(res.data!=null&&res.data.length>0){
+      order = res.data[0]
+    }else{
+      order.openId = wxContext.OPENID
+      order.createTime = Date.parse(new Date())
+      order.updateTime = Date.parse(new Date());
+      order.delFlag = 0
+      order.state = 0 //0 待支付  1已支付等待商家确认 2商家已确认  3已完成 4 已取消
+      const outTradeNo = createOutTradeNo() // 订单号
+      order.outTradeNo = outTradeNo  
 
+      await db.collection('order').add({
+        data: order,
+      });
+
+    }
     const payMent = await cloud.cloudPay.unifiedOrder({
       "body": order.info.body,
-      "outTradeNo": outTradeNo,
+      "outTradeNo": order.outTradeNo,
       "spbillCreateIp": "127.0.0.1",
       "subMchId": "1626840615", // 商户号
       "totalFee": order.info.totalPrice * 100,
@@ -30,11 +42,6 @@ exports.main = async (event, context) => {
       "nonceStr":"5K8264ILTKCH16CQ2502SI8ZNMTM67VS",
       "tradeType":"JSAPI"
     })
-
-      await db.collection('order').add({
-        data: order,
-      });
-      
   return {
     code: 0,
     data: payMent.payment,

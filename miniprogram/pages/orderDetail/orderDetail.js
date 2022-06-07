@@ -46,17 +46,31 @@ Page({
       name:'orderInterface',
       data:{
         type: 'payOrder',
-        id:that.data.orderInfo._id,
-        totalFee:1,
-        body:'支付测试'
+        orderNum:that.data.orderInfo.orderNum,
       },
       success(resp){
-        
        wx.requestPayment(
          {
           ...resp.data,
           success(res){
-            console.log('zhifu===',res)
+            wxCloudAPI.request({
+              showLoading:true,
+              name:'orderInterface',
+              data:{
+                type: 'paySuccessOrder',
+                orderNum:that.data.orderInfo.orderNum
+              },
+              success(resp){
+                wx.showToast({
+                  title: '提交成功',
+                  success(){
+                    setTimeout(function () {
+                      wx.navigateBack()
+                    }, 2000) 
+                  }
+                })
+              },
+            })
           },
           fail(err){
             console.log('zhifuerror===',err)
