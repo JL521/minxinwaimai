@@ -31,6 +31,7 @@ Page({
         that.setData({
           shopInfo:resp.data
         })
+        getApp().globalData.busShopInfo = that.data.shopInfo
       }
     })
   },

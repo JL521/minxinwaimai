@@ -14,7 +14,8 @@ Page({
     minDate: new Date().getTime(),
     maxDate: new Date(2099, 10, 1).getTime(),
     expectTime: new Date().getTime()+40*60*1000,
-    show:false
+    show:false,
+    distance:-1,
   },
 
   /**
@@ -25,7 +26,6 @@ Page({
       totalPrice:options.totalPrice,
       cars:getApp().globalData.cars,
     })
-    console.log('==',this.data)
   },
 
   chooseTime(){
@@ -35,7 +35,6 @@ Page({
   },
 
   onInput(event) {
-    console.log('选择的时间=='+event.detail)
     this.setData({
       expectTime: event.detail,
       show:false
@@ -62,7 +61,50 @@ Page({
   },
 
   submitOrder(){
+    if (!this.data.addressInfo.name||!this.data.addressInfo.phone||!this.data.addressInfo.address||!this.data.addressInfo.detailAddress||!this.data.expectTime) {
+      wx.showToast({
+        title: '请先完善联系信息~',
+        icon:'none'
+      })
+      return 
+    }
     let that = this
+    if (this.data.addressInfo.latitude&&this.data.addressInfo.longitude) {
+      let dis = this.getMapDistance(this.data.addressInfo.latitude,this.data.addressInfo.longitude,getApp().globalData.busShopInfo.latitude,getApp().globalData.busShopInfo.longitude)
+      console.log('距离============' + dis)
+      this.setData({
+        distance:dis
+      })
+      if (dis > getApp().globalData.busShopInfo.serviceDistance) {
+        wx.showModal({
+          title: '提示',
+          content: '超出配送范围需到店自提',
+          confirmText:'继续下单',
+          cancelText:'取消',
+          success: (res) => {
+            if (res.confirm) {
+              if(this.data.orderNum==''){
+                this.setData({
+                  orderNum:this.getOrderCode()
+                })
+                wx.requestSubscribeMessage({
+                  tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
+                  success(res){
+                    that.createOrder()
+                  },
+                  fail(){
+                    that.createOrder()
+                  }
+                })
+              }else{
+                this.createOrder()
+              }
+            }
+          },
+        });
+        return
+      }
+    }
     if(this.data.orderNum==''){
       this.setData({
         orderNum:this.getOrderCode()
@@ -83,6 +125,7 @@ Page({
   },
 
   createOrder(){
+    let that = this
     let order = {};
     order.info = this.data
     order.orderNum = this.data.orderNum
@@ -158,13 +201,30 @@ Page({
     wx.chooseLocation({
       success (res) {
         that.data.addressInfo.address = res.name
+        that.data.addressInfo.latitude = res.latitude
+        that.data.addressInfo.longitude = res.longitude
+        console.log(res)
         that.setData({
           addressInfo:that.data.addressInfo
         })
       }
      })
   },
-
+ /*
+  计算距离，参数分别为第一点的纬度，经度；第二点的纬度，经度
+  默认单位km
+ */
+  getMapDistance(la1,lo1,la2,lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;//地球半径
+    s = Math.round(s * 10000) / 10000;
+    console.log("计算结果",s);
+    return s;
+ },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -41,6 +41,24 @@ Page({
 
   submitOrder(){
     let that = this
+    if (that.data.orderInfo.info.distance > getApp().globalData.busShopInfo.serviceDistance) {
+      wx.showModal({
+        title: '提示',
+        content: '超出配送范围需到店自提',
+        confirmText:'继续下单',
+        cancelText:'取消',
+        success: (res) => {
+          if (res.confirm) {
+            that.createOrder()
+          }
+        },
+      });
+      return
+    }
+    this.createOrder()
+  },
+  createOrder(){
+    let that = this
     wxCloudAPI.request({
       showLoading:true,
       name:'orderInterface',

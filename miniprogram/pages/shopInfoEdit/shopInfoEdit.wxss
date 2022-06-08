@@ -13,6 +13,18 @@
   height: 60px;
   background-color: #eee;
 }
+
+.expectTime{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 15px;
+  font-size: 10pt;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+
 .save-btn{
   position: fixed;
   left: 0;

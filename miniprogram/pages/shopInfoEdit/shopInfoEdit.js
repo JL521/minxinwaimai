@@ -30,6 +30,8 @@ Page({
       this.data.shopInfo.time = e.detail
     }else if(e.currentTarget.id=='serviceAddress'){
       this.data.shopInfo.serviceAddress = e.detail
+    }else if(e.currentTarget.id=='serviceDistance'){
+      this.data.shopInfo.serviceDistance = e.detail 
     }
     this.setData({
       shopInfo:this.data.shopInfo
@@ -57,6 +59,20 @@ Page({
       })
   },
 
+  chooseAddress(){
+    let that = this
+    wx.chooseLocation({
+      success (res) {
+        that.data.shopInfo.latitude = res.latitude
+        that.data.shopInfo.longitude = res.longitude
+        console.log(res)
+        that.setData({
+          shopInfo:that.data.shopInfo
+        })
+      }
+     })
+  },
+
   //上传操作
   uploadFile(path) {
     let that = this
@@ -80,8 +96,7 @@ Page({
     })
   },
   save(){
-    if(this.data.shopInfo.name&&this.data.shopInfo.phone&&this.data.shopInfo.address&&this.data.shopInfo.time&&this.data.shopInfo.serviceAddress&&this.data.shopInfo.imgUrl){
-      
+    if(this.data.shopInfo.name&&this.data.shopInfo.phone&&this.data.shopInfo.address&&this.data.shopInfo.time&&this.data.shopInfo.serviceAddress&&this.data.shopInfo.imgUrl&&this.data.shopInfo.serviceDistance&&this.data.shopInfo.latitude&&this.data.shopInfo.longitude){
       let that = this
       let map={};
       Object.keys(this.data.shopInfo).forEach(function (key) {

@@ -56,9 +56,29 @@
     bind:change="valueChange"
     id="serviceAddress"
   />
-  
 
+  <van-field
+   title-width="120rpx"
+   type="textarea"
+    autosize
+    value="{{ shopInfo.serviceDistance }}"
+    clearable
+    label="配送距离"
+    placeholder="请输入配送距离单位KM"    
+    bind:change="valueChange"
+    id="serviceDistance"
+  />
+  
   </van-cell-group>
+
+  <view bindtap="chooseAddress" class="expectTime">
+<view>
+  上传经纬度坐标
+</view>
+<view>
+  {{shopInfo.latitude}},{{shopInfo.longitude}}
+</view>
+</view>
   
 </view>
 <view class="save-btn" bindtap="save">保存店铺</view>
