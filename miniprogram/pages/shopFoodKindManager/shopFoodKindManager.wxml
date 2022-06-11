@@ -1,9 +1,15 @@
 <view class="shop-kind">
 
 <view bindtap="addKind" data-item="{{item}}" class="kind-item" wx:for="{{list}}" wx:key="_id">
-<view>{{item.name}}</view>
-<view>{{item.state == 1?'上架中':'已下架'}}</view>
-<view capture-bind:tap="kindFoots" data-item="{{item}}">菜品数量{{item.count}}</view>
+<view class="shop-kind-info">
+  <view class="shop-kind-name">{{item.name}}</view>
+<view class="shop-kind-state">{{item.state == 1?'上架中':'已下架'}}</view>
+</view>
+<view class="shop-kind-info">
+  <view class="shop-kind-num">菜品数量</view>
+  <view>共  <label class="num">{{item.count}}</label>  道菜</view>
+</view>
+<view class="look-food" capture-bind:tap="kindFoots" data-item="{{item}}">查看菜品</view>
 </view>
 
 </view>

@@ -9,6 +9,40 @@
   background-color: white;
   margin-bottom: 20px;
 }
+.shop-kind-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.shop-kind-name{
+  font-weight: 500;
+  font-size: 15pt;
+}
+.shop-kind-num{
+  font-weight: 400;
+  font-size: 13pt;
+  padding: 10px 0;
+}
+.num{
+  font-size: 15pt;
+  font-weight: 500;
+}
+.shop-kind-state{
+  font-size: 12pt;
+  font-weight: 500;
+  color: rgb(105, 60, 213);
+}
+
+.look-food{
+  margin-top: 10px;
+  background-color: rgb(184, 156, 258);
+  padding: 10px;
+  text-align: center;
+  color: white;
+  border-radius: 100px;
+}
+
 .ad-foot-btn{
   position: fixed;
   left: 0;
