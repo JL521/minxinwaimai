@@ -28,6 +28,7 @@ exports.main = async (event, context) => {
     })
     .skip(i * maxSize)
     .limit(maxSize)
+    .orderBy('order','asc')
     .get();
 
     for(let i=0;i<res.data.length;i++){

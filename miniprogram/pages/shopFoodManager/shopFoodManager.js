@@ -78,6 +78,37 @@ Page({
     })
   },
 
+  delKind(e){
+    let that = this
+    let data = e.currentTarget.dataset.item
+    wx.showModal({
+      title: '提示',
+      content: '删除后，菜品将不再显示',
+      confirmText:'删除',
+      cancelText:'取消',
+      success: (res) => {
+        if (res.confirm) {
+          wxCloudAPI.request({
+            showLoading:true,
+            name:'shopInterface',
+            data:{
+              type: 'busDelFood',
+              id:data._id
+            },
+            success(resp){
+              that.data.pageNum = 0
+              that.setData({
+              pageNum:0
+             })
+             that.getList()
+            },
+          })
+        }
+      },
+    });
+   
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

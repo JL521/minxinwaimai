@@ -9,7 +9,12 @@
   <view class="shop-kind-num">菜品数量</view>
   <view>共  <label class="num">{{item.count}}</label>  道菜</view>
 </view>
-<view class="look-food" capture-bind:tap="kindFoots" data-item="{{item}}">查看菜品</view>
+<view class="shop-kind-info">
+  <view class="shop-kind-num">品类顺序</view>
+  <view>第  <label class="num">{{item.order==null?0:item.order}}</label>  品类</view>
+</view>
+<view class="look-food" catchtap="kindFoots" data-item="{{item}}">查看菜品</view>
+<view class="del-food-kind" catchtap="delKind" data-item="{{item}}">删除品类</view>
 </view>
 
 </view>

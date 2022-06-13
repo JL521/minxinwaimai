@@ -1,6 +1,7 @@
 <view class="shop-foot">
-<view bindtap="addKind" data-item="{{item}}" class="foot-item" wx:for="{{list}}" wx:key="_id">
-<image class="foot-img" src="{{item.imgUrl}}"></image>
+<view bindtap="addKind" class="food-item" data-item="{{item}}" wx:for="{{list}}" wx:key="_id">
+<view  class="foot-item">
+  <image class="foot-img" src="{{item.imgUrl}}"></image>
 <view class="food-info">
   <view class="item-info-title">{{item.name}}</view>
 <view class="item-price-m">￥{{item.price}}</view>
@@ -8,5 +9,9 @@
 </view>
 <view class="food-info-state">{{item.state == 1 ? '上架中':'已下架'}}</view>
 </view>
+<view class="del-food-kind" catchtap="delKind" data-item="{{item}}">删除菜品</view>
+
+</view>
+
 </view>
 <view class="ad-foot-btn" bindtap="addKind">新增菜品</view>

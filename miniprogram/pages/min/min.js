@@ -1,4 +1,6 @@
 // pages/min/min.js
+const wxCloudAPI = require('../../wx_cloud_api/wxCloudAPI')
+
 Page({
 
   /**
@@ -27,12 +29,22 @@ Page({
     wx.getUserProfile({
       desc: '获取用户昵称显示个人信息',
       success(res){
-        
+        console.log(res.userInfo)
         wx.setStorageSync('userInfo', JSON.stringify(res.userInfo))
-
         that.setData({
           isInfo:true,
           userInfo:res.userInfo
+        })
+        wxCloudAPI.request({
+          showLoading:false,
+          name:'userInterface',
+          data:{
+            type: 'saveInfo',
+            userInfo:res.userInfo
+          },
+          success(resp){
+           
+          },
         })
       },fail(err){
         console.log(err)
@@ -41,13 +53,6 @@ Page({
   },
 
   toDetail(e){
-    if(this.data.isInfo==false){
-      wx.showToast({
-        title: '请先点击头像登录~',
-        icon:'none'
-      })
-      return;
-    }
     let url;
     if(e.currentTarget.dataset.type=='1'){
       url = '../orderList/orderList'

@@ -64,25 +64,25 @@ Page({
     var h = tme.getHours() < 10 ?'0' + tme.getHours():tme.getHours();
     var m = tme.getMinutes()< 10 ?'0' + tme.getMinutes():tme.getMinutes();
     var s = tme.getSeconds()< 10 ?'0' + tme.getSeconds():tme.getSeconds();
-    let tem1 = Y + '-' + M + '-' + D + ' ' + h + ':' + m + ':' + s
+    let tem1 = Y + '-' + M + '-' + D + ' ' + h + '-' + m + '-' + s
     console.log("当前时间：" +tem1);  
-
+    let time10 = new Date().getTime()
     wxCloudAPI.request({
       showLoading:true,
       name:'subscribeInterface',
       data:{
         subMsg:{
-          name7:{
+          thing2:{
             value:'民心外卖'
           },
-          phone_number3:{
-            value:'15105314998'
+          thing5:{
+            value:'商家已接单，请您耐心等待'
           },
-          time4:{
-            value:tem1
+          phrase7:{
+            value:'已接单'
           },
         },
-        templateId:'UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk',
+        templateId:'X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0',
         openId:that.data.orderInfo.openId
       },
       success(resp){

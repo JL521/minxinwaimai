@@ -8,6 +8,8 @@ const busGetFoodList = require('./busGetFoodList/index')
 const busGetOrderList = require('./busGetOrderList/index')
 const busChangeOrderState = require('./busChangeOrderState/index')
 const busCancleOrder = require('./busCancleOrder/index')
+const busDelFoodKind = require('./busDelFoodKind/index')
+const busDelFood = require('./busDelFood/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -32,6 +34,10 @@ exports.main = async (event, context) => {
       return await busChangeOrderState.main(event,context)
     case 'busCancleOrder':
       return await busCancleOrder.main(event,context)
+    case 'busDelFoodKind':
+      return await busDelFoodKind.main(event,context)
+    case 'busDelFood':
+      return await busDelFood.main(event,context)
   }
 
   return {

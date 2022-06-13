@@ -20,6 +20,37 @@ Page({
     })
   },
 
+  delKind(e){
+    let that = this
+    let data = e.currentTarget.dataset.item
+    wx.showModal({
+      title: '提示',
+      content: '删除品类后，品类下菜品将不再显示',
+      confirmText:'删除',
+      cancelText:'取消',
+      success: (res) => {
+        if (res.confirm) {
+          wxCloudAPI.request({
+            showLoading:true,
+            name:'shopInterface',
+            data:{
+              type: 'busDelFoodKind',
+              id:data._id
+            },
+            success(resp){
+              that.data.pageNum = 0
+              that.setData({
+              pageNum:0
+             })
+             that.getList()
+            },
+          })
+        }
+      },
+    });
+   
+  },
+
   addKind(e){
     let data;
     if(e.currentTarget.dataset.item){

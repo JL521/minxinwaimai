@@ -9,6 +9,15 @@
     bind:change="valueChange"
     id="name"
   />
+  <van-field
+   title-width="120rpx"
+    value="{{ footKind.order }}"
+    clearable
+    label="品类顺序"
+    placeholder="请输入品类顺序"    
+    bind:change="valueChange"
+    id="order"
+  />
   </van-cell-group>
 <view class="kind-state"> 
   <view>是否上架</view>

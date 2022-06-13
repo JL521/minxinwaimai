@@ -59,7 +59,7 @@ Page({
       name:'shopInterface',
       data:{
         type: 'busGetShopInfo',
-        id:'b69f67c0629d9552061977f15efcdf73',
+        id:'6842667962a43f0105787b6b3bd234d1',
       },
       success(resp){
         that.setData({

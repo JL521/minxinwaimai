@@ -2,6 +2,7 @@ const createAddress = require('./address/createAddress/index')
 const addressList = require('./address/addressList/index')
 const getOpenId = require('./user/getOpenId/index')
 const deladdress = require('./address/deladdress/index')
+const saveInfo = require('./user/saveInfo/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -14,6 +15,8 @@ exports.main = async (event, context) => {
       return await getOpenId.main(event,context)
       case 'deladdress':
       return await deladdress.main(event,context)
+      case 'saveInfo':
+      return await saveInfo.main(event,context)
   }
 
   return {

@@ -11,6 +11,7 @@ exports.main = async (event, context) => {
   
   try{
     let res = await db.collection('footKind')
+    .orderBy('order','asc')
     .skip(event.pageNum * event.pageSize)
     .limit(event.pageSize)
     .get();

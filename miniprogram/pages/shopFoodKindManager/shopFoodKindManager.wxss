@@ -42,6 +42,14 @@
   color: white;
   border-radius: 100px;
 }
+.del-food-kind{
+  margin-top: 10px;
+  background-color: #eee;
+  padding: 10px;
+  text-align: center;
+  color: #333;
+  border-radius: 100px;
+}
 
 .ad-foot-btn{
   position: fixed;

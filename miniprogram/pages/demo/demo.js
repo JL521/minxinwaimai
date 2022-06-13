@@ -25,7 +25,7 @@ Page({
       name:'shopInterface',
       data:{
         type: 'busGetShopInfo',
-        id:'b69f67c0629d9552061977f15efcdf73',
+        id:'6842667962a43f0105787b6b3bd234d1',
       },
       success(resp){
         that.setData({
@@ -170,6 +170,15 @@ Page({
   goOrder(){
     if(this.data.selectList.length<1){
       return;
+    }
+    if(this.data.shopInfo.state!=1){
+      wx.showModal({
+        showCancel:false,
+        confirmText:'确定',
+        title:'提示',
+        content:'店家休息中,请稍后再来~，'
+      })
+      return
     }
     getApp().globalData.cars = this.data.selectList
     wx.navigateTo({

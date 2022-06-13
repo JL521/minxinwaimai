@@ -15,6 +15,8 @@ Page({
   valueChange(e){
     if(e.currentTarget.id=='name'){
       this.data.footKind.name = e.detail
+    }else if(e.currentTarget.id=='order'){
+      this.data.footKind.order = e.detail
     }
     this.setData({
       footKind:this.data.footKind
@@ -22,6 +24,10 @@ Page({
   },
 
   save(){
+    this.data.footKind.order = this.data.footKind.order - 0
+    this.setData({
+      footKind:this.data.footKind
+    })
     if(!this.data.footKind.name){
       wx.showToast({
         title: '请输入品类名称',

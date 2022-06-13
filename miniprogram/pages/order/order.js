@@ -88,7 +88,7 @@ Page({
                   orderNum:this.getOrderCode()
                 })
                 wx.requestSubscribeMessage({
-                  tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
+                  tmplIds: ['X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0'],
                   success(res){
                     that.createOrder()
                   },
@@ -104,13 +104,20 @@ Page({
         });
         return
       }
+    }else{
+      wx.showToast({
+        title: '请选择地址~',
+        icon:'none'
+      })
+      return
     }
+
     if(this.data.orderNum==''){
       this.setData({
         orderNum:this.getOrderCode()
       })
       wx.requestSubscribeMessage({
-        tmplIds: ['UjKyvhA8T50W6o4fSiuVSfmJQv5cyT9wzO0sIc5nGYk'],
+        tmplIds: ['X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0'],
         success(res){
           that.createOrder()
         },

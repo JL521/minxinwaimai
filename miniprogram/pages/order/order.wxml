@@ -28,13 +28,14 @@
    title-width="120rpx"
     value="{{ addressInfo.address }}"
     label="地址"
-    placeholder="请输入地址"
+    placeholder="请点击选择地址"
     type="textarea"
     autosize
     use-button-slot
     left-icon="location-o"
     bind:change="valueChange"
     id="address"
+    bind:focus="chooseAddress"
   >
   <view bindtap="chooseAddress" class="shoose-addres" slot="button">
       选择地址
