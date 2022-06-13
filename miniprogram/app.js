@@ -18,11 +18,24 @@ App({
         traceUser: true,
       });
     }
-
     this.globalData = {
        cars:[],
        address:{},
        busShopInfo:{}
     };
-  }
+    wx.removeStorageSync('isShopId')
+    wxCloudAPI.request({
+      showLoading:true,
+      name:'userInterface',
+      data:{
+        type: 'getOpenId',
+      },
+      success(resp){
+       console.log(resp)
+       if (resp.data.openid == 'o8ma44gSdZFzsLXVqjzpRP4S_riI') {
+         wx.setStorageSync('isShopId', resp.data.openid)   
+       }
+      },
+    })
+  },
 });

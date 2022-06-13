@@ -1,8 +1,7 @@
 {
   "pages": [
-    
-    "pages/shopManager/shopManager",
     "pages/demo/demo",
+    "pages/shopManager/shopManager",
     "pages/min/min",
     "pages/shopCar/shopCar",
     "pages/order/order",
@@ -54,7 +53,7 @@
       },
       {
         "pagePath": "pages/shopManager/shopManager",
-        "text": "我的店铺"
+        "text": "店铺管理"
       }
     ]
   },

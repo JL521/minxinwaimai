@@ -37,8 +37,6 @@ Page({
   },
 
   onLoad(options) {
-    this.getShopInfo()
-    this.getfoods()
   },
 
   getfoods(){
@@ -186,9 +184,16 @@ Page({
     })
   },
   goShop(){
-    wx.navigateTo({
-      url: '../shop/shop',
-    })
+    if (wx.getStorageSync('isShopId')) {
+      wx.redirectTo({
+        url: '../shopManager/shopManager',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../shop/shop',
+      })
+    }
+    
   },
   onClose() {
     this.setData({ show: false });

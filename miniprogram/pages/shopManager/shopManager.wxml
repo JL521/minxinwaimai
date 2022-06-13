@@ -1,6 +1,6 @@
 <view class="shop-manager">
 
-<view wx:if="{{!shopInfo._id}}">
+<!-- <view wx:if="{{!shopInfo._id}}">
   <view class="login-info">
   <van-cell-group>
     <van-field
@@ -32,9 +32,9 @@
   </view>
 </view>
 
-</view>
+</view> -->
 
-<view wx:else>
+<view>
   <view class="min">
 <view class="min-info">
 <view>

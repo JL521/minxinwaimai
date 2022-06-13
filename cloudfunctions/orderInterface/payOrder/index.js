@@ -8,6 +8,21 @@ const db = cloud.database();
 
 // 获取openId云函数入口函数
 exports.main = async (event, context) => {
+
+  let shops = await db.collection('shop')
+    .where({
+      _id:'6842667962a43f0105787b6b3bd234d1',
+    })
+    .get();
+    let shop = shops.data[0]
+    if (shop.state!=1) {
+      return {
+        code:-1,
+        data:null,
+        msg:'店铺休息中，请稍后再来~'
+      }
+    }
+
   let res = await db.collection('order').where({
     orderNum:event.orderNum
   }).get();
