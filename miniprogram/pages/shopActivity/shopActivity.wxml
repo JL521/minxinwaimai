@@ -1,0 +1,8 @@
+<!--pages/shopActivity/shopActivity.wxml-->
+<view class="shop-activity">
+<view bindtap="addActivity" data-item="{{item}}" class="activity-item" wx:for="{{list}}" wx:key="_id">
+<view>满{{item.maxPrice}}减{{item.disPrice}}</view>
+<view class="del-activity" catchtap="delActivity" data-item="{{item}}">删除活动</view>
+</view>
+</view>
+<view class="shop-activity-btn" bindtap="addActivity">新增活动</view>

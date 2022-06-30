@@ -1,0 +1,21 @@
+<view class="shop-activity">
+    <van-field
+   title-width="120rpx"
+    value="{{ activity.maxPrice }}"
+    clearable
+    label="满减价格"
+    placeholder="请输入满减价格"    
+    bind:change="valueChange"
+    id="maxPrice"
+  />
+  <van-field
+   title-width="120rpx"
+    value="{{ activity.disPrice }}"
+    clearable
+    label="优惠价格"
+    placeholder="请输入优惠价格"    
+    bind:change="valueChange"
+    id="disPrice"
+  />
+  </view>
+  <view class="shop-activity-btn" bindtap="addActivity">保存活动</view>

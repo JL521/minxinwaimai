@@ -41,6 +41,29 @@
   font-size: 10pt;
   color: #666;
 }
+.shop-activity{
+  background-color: white;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12pt;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.shop-activity-item{
+color: rgb(221, 54, 51);
+padding: 0 5px;
+font-size: 10pt;
+}
+.shop-activity-item-min{
+  text-align: right;
+  flex: 1;
+  font-size: 10pt;
+  color: #333;
+}
 .link {
   width: 100%;
   flex: 1;
@@ -151,7 +174,7 @@
   position: fixed;
   bottom: 0px;
   right: 10px;
-  left: 250rpx;
+  left: 220rpx;
   border-radius: 40px;
   background-color: rgb(184, 156, 258);
   display: flex;
@@ -165,7 +188,12 @@
   flex: 1;
   padding: 0 10px;
   color: white;
-  text-align: center;
+  text-align: left;
+}
+.dis-money{
+  margin: 0 5px;
+  color: rgb(221, 54, 51);
+  font-size: 9pt;
 }
 .go-order{
   padding: 0 20px;

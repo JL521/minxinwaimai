@@ -11,6 +11,10 @@
   <view class="shop-des-add">{{shopInfo.address}}</view>
 </view>
 </view>
+<view class="shop-activity">
+<view wx:key="_id" wx:for="{{shopInfo.activities}}" class="shop-activity-item">{{item.maxPrice}}减{{item.disPrice}}</view>
+<view class="shop-activity-item-min">￥{{shopInfo.servicePrice}}起送</view>
+</view>
 <view class="link">
 	<!-- 左边 -->
 	<scroll-view class="left" scroll-y scroll-with-animation scroll-top="{{scrollTops}}">
@@ -48,7 +52,7 @@
 </van-popup>
 	<view bindtap="goShopCar" class="shop-car">
 		<van-icon name="shopping-cart-o" info="{{totalCount<=0?'':totalCount}}" size="30px" color="white"/>
-		<view class="total-money">总计 ￥{{totalPrice}}</view>
+		<view class="total-money">总计{{totalPrice}}<label class="dis-money" wx:if="{{disPrice!=0}}">已减{{disPrice}}</label></view>
 		<view catchtap="goOrder" class="go-order">去结算</view>
 	</view>
 </view>

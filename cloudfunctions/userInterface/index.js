@@ -3,6 +3,7 @@ const addressList = require('./address/addressList/index')
 const getOpenId = require('./user/getOpenId/index')
 const deladdress = require('./address/deladdress/index')
 const saveInfo = require('./user/saveInfo/index')
+const getShopIds = require('./user/getShopIds/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -17,6 +18,8 @@ exports.main = async (event, context) => {
       return await deladdress.main(event,context)
       case 'saveInfo':
       return await saveInfo.main(event,context)
+      case 'getShopIds':
+      return await getShopIds.main(event,context)
   }
 
   return {

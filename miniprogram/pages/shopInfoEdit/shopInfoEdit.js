@@ -19,6 +19,21 @@ Page({
     })
   },
 
+  onChange({ detail }) {
+    wx.showModal({
+      title: '提示',
+      content: '是否变更店铺活动状态？',
+      success: (res) => {
+        if (res.confirm) {
+          this.data.shopInfo.activityState = this.data.shopInfo.activityState==1?0:1
+          this.setData({
+            shopInfo:this.data.shopInfo
+          })
+        }
+      },
+    });
+  },
+
   valueChange(e){
     if(e.currentTarget.id=='name'){
       this.data.shopInfo.name = e.detail
@@ -32,6 +47,8 @@ Page({
       this.data.shopInfo.serviceAddress = e.detail
     }else if(e.currentTarget.id=='serviceDistance'){
       this.data.shopInfo.serviceDistance = e.detail 
+    }else if(e.currentTarget.id=='servicePrice'){
+      this.data.shopInfo.servicePrice = e.detail 
     }
     this.setData({
       shopInfo:this.data.shopInfo
@@ -58,7 +75,11 @@ Page({
         }
       })
   },
-
+  goShopActivity(){
+    wx.navigateTo({
+      url: '../shopActivity/shopActivity',
+    })
+  },
   chooseAddress(){
     let that = this
     wx.chooseLocation({

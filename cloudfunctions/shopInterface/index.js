@@ -10,6 +10,9 @@ const busChangeOrderState = require('./busChangeOrderState/index')
 const busCancleOrder = require('./busCancleOrder/index')
 const busDelFoodKind = require('./busDelFoodKind/index')
 const busDelFood = require('./busDelFood/index')
+const busAddActivity = require('./busAddActivity/index')
+const busGetActivityList = require('./busGetActivityList/index')
+const busDelActivity = require('./busDelActivity/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -38,6 +41,12 @@ exports.main = async (event, context) => {
       return await busDelFoodKind.main(event,context)
     case 'busDelFood':
       return await busDelFood.main(event,context)
+    case 'busAddActivity':
+      return await busAddActivity.main(event,context)
+    case 'busGetActivityList':
+      return await busGetActivityList.main(event,context)
+    case 'busDelActivity':
+      return await busDelActivity.main(event,context)
   }
 
   return {

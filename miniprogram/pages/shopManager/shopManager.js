@@ -1,5 +1,7 @@
 // pages/shopManager/shopManager.js
 const wxCloudAPI = require('../../wx_cloud_api/wxCloudAPI')
+var plugin = requirePlugin("WechatSI")
+let manager = plugin.getRecordRecognitionManager()
 
 Page({
 
@@ -10,6 +12,42 @@ Page({
   data: {
     shopInfo:{},
     ispwd:true,
+    auidoSrc:''
+  },
+
+  onReady(){
+    this.innerAudioContext = wx.createInnerAudioContext();
+    this.innerAudioContext.onError(function (res) {
+      wx.showToast({
+        title: '语音播放初始化失败',
+      })
+    })
+
+  },
+  //阅读文字
+  readText: function () {
+    var that = this;
+    plugin.textToSpeech({
+      lang: "zh_CN",
+      tts: true,
+      content: '添加成功',
+      success: function (res) {
+        that.setData({
+          auidoSrc: res.filename
+        })
+        that.readStart();
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '语音转换失败',
+        })
+      }
+    })
+  },
+  //开始阅读文字
+  readStart: function () {
+    this.innerAudioContext.src = this.data.auidoSrc //设置音频地址
+    this.innerAudioContext.play(); //播放音频
   },
 
   /**
@@ -144,13 +182,6 @@ Page({
         this.setData({
           ispwd:!this.data.ispwd
         })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**

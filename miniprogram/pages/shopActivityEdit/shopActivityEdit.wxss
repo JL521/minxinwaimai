@@ -1,0 +1,14 @@
+/* pages/shopActivityEdit/shopActivityEdit.wxss */
+.shop-activity-btn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120rpx;
+  background-color:  rgb(105, 60, 213);
+  text-align: center;
+  line-height: 120rpx;
+  color: white;
+  font-weight: 500;
+  z-index: 99;
+}

@@ -8,7 +8,9 @@ Page({
    */
   data: {
     isInfo:false,
-    userInfo:{}
+    userInfo:{},
+    shopInfo:{},
+    isShop:false
   },
 
   /**
@@ -23,7 +25,72 @@ Page({
         userInfo:JSON.parse(userInfo)
       })
     }
+    this.setData({
+      isShop:wx.getStorageSync('isShopId')
+    })
   },
+
+  onChange({ detail }) {
+    wx.showModal({
+      title: '提示',
+      content: '是否变更店铺营业状态？',
+      success: (res) => {
+        if (res.confirm) {
+          this.chageShopState()
+        }
+      },
+    });
+  },
+
+  chageShopState(){
+    let that = this
+    wxCloudAPI.request({
+      showLoading:true,
+      name:'shopInterface',
+      data:{
+        type: 'busChangeShopInfo',
+        id:this.data.shopInfo._id,
+        data:{
+          state:this.data.shopInfo.state == 0? 1:0
+        }
+      },
+      success(resp){
+        that.data.shopInfo.state = that.data.shopInfo.state == 0? 1:0
+        that.setData({
+          shopInfo:that.data.shopInfo
+        })
+      },
+    })
+
+  },
+
+  getShopInfo(){
+    let that = this
+    wxCloudAPI.request({
+      showLoading:true,
+      name:'shopInterface',
+      data:{
+        type: 'busGetShopInfo',
+        id:'6842667962a43f0105787b6b3bd234d1',
+      },
+      success(resp){
+        that.setData({
+          shopInfo:resp.data
+        })
+      },
+      fail(resp){
+        if(resp.code=='001'){
+          that.setData({
+            shopInfo:{}
+          })
+          wx.removeStorage({
+            key: 'shopInfo',
+          })
+        }
+      }
+    })
+  },
+
   getInfo(res){
     let that = this
     wx.getUserProfile({
@@ -53,19 +120,37 @@ Page({
   },
 
   toDetail(e){
-    let url;
-    if(e.currentTarget.dataset.type=='1'){
-      url = '../orderList/orderList'
-    }else if(e.currentTarget.dataset.type=='2'){
-      url='../addressList/addressList';
-    }else if(e.currentTarget.dataset.type=='3'){
-      url = '../shop/shop'
-    }else if(e.currentTarget.dataset.type=='4'){
-      url = '../mkxcx/mkxcx'
+    if(this.data.isShop){
+      getApp().globalData.busShopInfo = this.data.shopInfo
+      let url;
+      if(e.currentTarget.dataset.type=='1'){
+        url = '../shopInfoEdit/shopInfoEdit'
+      }else if(e.currentTarget.dataset.type=='2'){
+        url='../shopOrderManager/shopOrderManager';
+      }else if(e.currentTarget.dataset.type=='3'){
+        url = '../shopFoodKindManager/shopFoodKindManager'
+      }else if(e.currentTarget.dataset.type=='4'){
+        url = '../shopFoodManager/shopFoodManager'
+      }
+      wx.navigateTo({
+        url: url,
+      })
+    }else{
+      let url;
+      if(e.currentTarget.dataset.type=='1'){
+        url = '../orderList/orderList'
+      }else if(e.currentTarget.dataset.type=='2'){
+        url='../addressList/addressList';
+      }else if(e.currentTarget.dataset.type=='3'){
+        url = '../shop/shop'
+      }else if(e.currentTarget.dataset.type=='4'){
+        url = '../mkxcx/mkxcx'
+      }
+      wx.navigateTo({
+        url: url,
+      })
     }
-    wx.navigateTo({
-      url: url,
-    })
+    
   },
 
   /**
@@ -79,7 +164,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.isShop) {
+      this.getShopInfo()
+    }
+    
   },
 
   /**

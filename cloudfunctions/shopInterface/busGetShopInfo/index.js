@@ -23,6 +23,10 @@ exports.main = async (event, context) => {
       };
     }else{
       let shop = res.data[0]
+      let activities = await db.collection('activity')
+         .orderBy('maxPrice','asc')
+         .get();
+      shop.activities = activities.data;
       return {
         code: 0,
         data: shop,

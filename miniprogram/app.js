@@ -23,7 +23,6 @@ App({
        address:{},
        busShopInfo:{}
     };
-    wx.removeStorageSync('isShopId')
     wxCloudAPI.request({
       showLoading:true,
       name:'userInterface',
@@ -32,9 +31,7 @@ App({
       },
       success(resp){
        console.log(resp)
-       if (resp.data.openid == 'o8ma44gSdZFzsLXVqjzpRP4S_riI') {
-         wx.setStorageSync('isShopId', resp.data.openid)   
-       }
+         wx.setStorageSync('isShopId', resp.data.isShop)   
       },
     })
   },

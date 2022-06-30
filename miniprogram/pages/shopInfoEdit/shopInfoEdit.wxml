@@ -44,6 +44,15 @@
     bind:change="valueChange"
     id="time"
   />
+  <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.time }}"
+    clearable
+    label="营业时间"
+    placeholder="请输入营业时间"    
+    bind:change="valueChange"
+    id="time"
+  />
 
   <van-field
    title-width="120rpx"
@@ -81,4 +90,22 @@
 </view>
   
 </view>
+
+<view class="shop-activity-price">
+  <van-field
+   title-width="120rpx"
+    value="{{ shopInfo.servicePrice }}"
+    clearable
+    label="起送价格"
+    placeholder="请输入起送价格"    
+    bind:change="valueChange"
+    id="servicePrice"
+  />
+  <view style="height: 15px;width: 100%;"></view>
+  <view bindtap="goShopActivity" class="shop-activity shop-activity-btn">
+  <view>满减活动</view>
+  <!-- <van-switch size="20px" active-color="rgb(184, 156, 258)" inactive-color="#eee" checked="{{ shopInfo.activityState == 1 }}" bind:change="onChange" /> -->
+  </view>
+</view>
+
 <view class="save-btn" bindtap="save">保存店铺</view>

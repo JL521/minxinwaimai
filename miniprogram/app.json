@@ -19,7 +19,8 @@
     "pages/shopFoodManager/shopFoodManager",
     "pages/addShopFoodKind/addShopFoodKind",
     "pages/addShopFood/addShopFood",
-
+    "pages/shopActivity/shopActivity",
+    "pages/shopActivityEdit/shopActivityEdit",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",
     "pages/deployService/index",
@@ -50,10 +51,6 @@
       {
         "pagePath": "pages/min/min",
         "text": "我的"
-      },
-      {
-        "pagePath": "pages/shopManager/shopManager",
-        "text": "店铺管理"
       }
     ]
   },
@@ -65,5 +62,11 @@
   },
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index"
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.5",
+      "provider": "wx069ba97219f66d99"
+    }
   }
 }

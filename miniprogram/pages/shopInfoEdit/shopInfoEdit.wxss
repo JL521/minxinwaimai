@@ -24,6 +24,19 @@
   margin-bottom: 10px;
 }
 
+.shop-activity{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop-activity-btn{
+  padding:15px;
+  background-color: white;
+  font-size: 11pt;
+  color: #333;
+}
 
 .save-btn{
   position: fixed;

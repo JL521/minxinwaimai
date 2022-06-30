@@ -1,4 +1,5 @@
-<view class="min">
+<view wx:if="{{!isShop}}" class="min-user">
+  <view class="min">
 <view bindtap="getInfo" class="min-info">
 <view wx:if="{{isInfo}}">
   <image class="min-img" src="{{userInfo.avatarUrl}}" alt="用户头像"/>
@@ -6,7 +7,6 @@
 </view>
 <view wx:else class="no-login">授权登录</view>
 </view>
-
 <view class="min-body">
   <view bindtap="toDetail" data-type="1" class="min-body-item">
     <van-icon name="cart-circle-o" size="40px" color="rgb(184, 156, 258)"/>
@@ -25,5 +25,45 @@
     <view>我也制作小程序</view>
   </view>
 </view>
+</view>
+</view>
 
+<view wx:if="{{isShop}}" class="shop-manager">
+<view>
+  <view class="min">
+<view class="min-info">
+<view bindtap="getInfo">
+  <image class="min-img" src="{{shopInfo.imgUrl}}" alt="店铺图片"/>
+   <view class="nick-name">
+   {{shopInfo.name}}
+   </view>
+</view>
+</view>
+
+<view class="shop-state">
+  <label class="state-text">{{shopInfo.state == 1 ?'(营业中)':'(暂停营业)'}}</label>
+  <van-switch size="20px" active-color="rgb(184, 156, 258)" inactive-color="#eee" checked="{{ shopInfo.state == 1 }}" bind:change="onChange" />
+</view>
+
+<view class="min-body">
+  <view bindtap="toDetail" data-type="1" class="min-body-item">
+    <van-icon name="cart-circle-o" size="40px" color="rgb(184, 156, 258)"/>
+    <view>店铺管理</view>
+  </view>
+  <view bindtap="toDetail" data-type="2" class="min-body-item">
+    <van-icon size="40px" name="location-o" color="rgb(184, 156, 258)"/>
+    <view>订单管理</view>
+  </view>
+  <view bindtap="toDetail" data-type="3" class="min-body-item">
+    <van-icon size="40px" name="phone-circle-o" color="rgb(184, 156, 258)"/>
+    <view>品类管理</view>
+  </view>
+  <view bindtap="toDetail" data-type="4" class="min-body-item">
+    <van-icon size="40px" name="cashier-o" color="rgb(184, 156, 258)" />
+    <view>菜品管理</view>
+  </view>
+</view>
+
+</view>
+</view>
 </view>

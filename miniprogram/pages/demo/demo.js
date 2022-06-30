@@ -10,6 +10,7 @@ Page({
     selectList:[],
     totalCount:0,
     totalPrice:0,
+    disPrice:0,
     shopInfo:{},
 
     scrollTops: 0,  
@@ -84,6 +85,7 @@ Page({
         list:this.data.list,
         selectList:[],
         totalPrice:0,
+        disPrice:0,
         totalCount:0
       })
       this.getfoods()
@@ -121,12 +123,21 @@ Page({
       tprice = tprice + data.num * data.price
       console.log('selestlist====',this.data.selectList)
     }
-    console.log(tcount)
+    let disP = 0;
+    if (this.data.shopInfo.activities) {
+      for(let i=0;i<this.data.shopInfo.activities.length;i++){
+        if (tprice >= this.data.shopInfo.activities[i].maxPrice) {
+          tprice = tprice - this.data.shopInfo.activities[i].disPrice
+          disP = this.data.shopInfo.activities[i].disPrice
+        }
+      }
+    }
     this.setData({
       selectList:this.data.selectList,
       list:this.data.list,
       totalCount:tcount,
-      totalPrice:tprice
+      totalPrice:tprice,
+      disPrice:disP
     })
   },
   del(e){
@@ -149,11 +160,32 @@ Page({
           selectList:this.data.selectList,
           list:this.data.list,
           totalCount:this.data.totalCount-1,
-          totalPrice:this.data.totalPrice - data.price
         })
         break
       }
     }
+
+    let tprice = 0;
+    for(let i=0;i<this.data.selectList.length;i++){
+      let e = this.data.selectList[i]
+      tprice = tprice + e.num * e.price
+    }
+
+    let disP = 0;
+    if (this.data.shopInfo.activities) {
+      for(let i=0;i<this.data.shopInfo.activities.length;i++){
+        if (tprice >= this.data.shopInfo.activities[i].maxPrice) {
+          tprice = tprice - this.data.shopInfo.activities[i].disPrice
+          disP = this.data.shopInfo.activities[i].disPrice
+        }
+      }
+    }
+
+    this.setData({
+      totalPrice:tprice,
+      disPrice:disP
+    })
+
     if(this.data.selectList.length<=0){
       this.setData({show:false})
     }
@@ -178,22 +210,22 @@ Page({
       })
       return
     }
+    if (this.data.totalPrice<this.data.shopInfo.servicePrice) {
+      wx.showToast({
+        title: '最低￥'+this.data.shopInfo.servicePrice+'起送',
+        icon:'none'
+      })
+      return;
+    }
     getApp().globalData.cars = this.data.selectList
     wx.navigateTo({
       url: '../order/order?totalPrice='+this.data.totalPrice,
     })
   },
   goShop(){
-    if (wx.getStorageSync('isShopId')) {
-      wx.redirectTo({
-        url: '../shopManager/shopManager',
-      })
-    }else{
-      wx.navigateTo({
-        url: '../shop/shop',
-      })
-    }
-    
+    wx.navigateTo({
+      url: '../shop/shop',
+    })
   },
   onClose() {
     this.setData({ show: false });
