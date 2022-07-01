@@ -174,7 +174,7 @@ font-size: 10pt;
   position: fixed;
   bottom: 0px;
   right: 10px;
-  left: 220rpx;
+  left: 210rpx;
   border-radius: 40px;
   background-color: rgb(184, 156, 258);
   display: flex;
@@ -191,7 +191,7 @@ font-size: 10pt;
   text-align: left;
 }
 .dis-money{
-  margin: 0 5px;
+  margin-left: 5px;
   color: rgb(221, 54, 51);
   font-size: 9pt;
 }

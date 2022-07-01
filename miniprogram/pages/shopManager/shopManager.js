@@ -1,7 +1,5 @@
 // pages/shopManager/shopManager.js
 const wxCloudAPI = require('../../wx_cloud_api/wxCloudAPI')
-var plugin = requirePlugin("WechatSI")
-let manager = plugin.getRecordRecognitionManager()
 
 Page({
 
@@ -13,41 +11,6 @@ Page({
     shopInfo:{},
     ispwd:true,
     auidoSrc:''
-  },
-
-  onReady(){
-    this.innerAudioContext = wx.createInnerAudioContext();
-    this.innerAudioContext.onError(function (res) {
-      wx.showToast({
-        title: '语音播放初始化失败',
-      })
-    })
-
-  },
-  //阅读文字
-  readText: function () {
-    var that = this;
-    plugin.textToSpeech({
-      lang: "zh_CN",
-      tts: true,
-      content: '添加成功',
-      success: function (res) {
-        that.setData({
-          auidoSrc: res.filename
-        })
-        that.readStart();
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: '语音转换失败',
-        })
-      }
-    })
-  },
-  //开始阅读文字
-  readStart: function () {
-    this.innerAudioContext.src = this.data.auidoSrc //设置音频地址
-    this.innerAudioContext.play(); //播放音频
   },
 
   /**
@@ -218,11 +181,14 @@ Page({
   onReachBottom: function () {
 
   },
-
   /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  * 用户点击右上角分享
+  */
+ onShareAppMessage: function () {
+  return {
+    title:'平阴民心外卖',
+    path:'pages/demo/demo',
+    imageUrl:'../../images/share.png'
+  };
+},
 })

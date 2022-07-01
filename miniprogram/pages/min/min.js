@@ -197,11 +197,14 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+/**
+  * 用户点击右上角分享
+  */
+ onShareAppMessage: function () {
+  return {
+    title:'平阴民心外卖',
+    path:'pages/demo/demo',
+    imageUrl:'../../images/share.png'
+  };
+},
 })

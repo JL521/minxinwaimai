@@ -37,6 +37,17 @@ Page({
     })
   },
 
+  /**
+  * 用户点击右上角分享
+  */
+ onShareAppMessage: function () {
+  return {
+    title:'平阴民心外卖',
+    path:'pages/demo/demo',
+    imageUrl:'../../images/share.png'
+  };
+},
+
   onLoad(options) {
   },
 
@@ -127,11 +138,11 @@ Page({
     if (this.data.shopInfo.activities) {
       for(let i=0;i<this.data.shopInfo.activities.length;i++){
         if (tprice >= this.data.shopInfo.activities[i].maxPrice) {
-          tprice = tprice - this.data.shopInfo.activities[i].disPrice
           disP = this.data.shopInfo.activities[i].disPrice
         }
       }
     }
+    tprice = tprice - disP
     this.setData({
       selectList:this.data.selectList,
       list:this.data.list,
@@ -175,11 +186,11 @@ Page({
     if (this.data.shopInfo.activities) {
       for(let i=0;i<this.data.shopInfo.activities.length;i++){
         if (tprice >= this.data.shopInfo.activities[i].maxPrice) {
-          tprice = tprice - this.data.shopInfo.activities[i].disPrice
           disP = this.data.shopInfo.activities[i].disPrice
         }
       }
     }
+    tprice = tprice - disP
 
     this.setData({
       totalPrice:tprice,
