@@ -24,7 +24,11 @@
     bind:change="valueChange"
     id="phone"
     maxlength="11"
-  />
+  >
+  <view bindtap="callPhone" class="shoose-addres" slot="button">
+      拨打电话
+    </view>
+  </van-field>
   <van-field
   disabled
    title-width="120rpx"

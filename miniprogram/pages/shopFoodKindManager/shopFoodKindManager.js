@@ -159,4 +159,11 @@ Page({
     imageUrl:'../../images/share.png'
   };
 },
+onShareTimeline:function(){
+  return {
+    title:'平阴民心外卖',
+    path:'pages/demo/demo',
+    imageUrl:'../../images/share.png'
+  };
+},
 })

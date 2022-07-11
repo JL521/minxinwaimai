@@ -39,6 +39,18 @@ Page({
     })
   },
 
+  callPhone(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.addressInfo.phone,
+      success(){
+        console.log('成功')
+      },
+      fail(){
+        console.log('失败')
+      }
+    })
+  },
+
   submitOrder(){
     let that = this
     wxCloudAPI.request({
@@ -172,6 +184,13 @@ Page({
   * 用户点击右上角分享
   */
  onShareAppMessage: function () {
+  return {
+    title:'平阴民心外卖',
+    path:'pages/demo/demo',
+    imageUrl:'../../images/share.png'
+  };
+},
+onShareTimeline:function(){
   return {
     title:'平阴民心外卖',
     path:'pages/demo/demo',
