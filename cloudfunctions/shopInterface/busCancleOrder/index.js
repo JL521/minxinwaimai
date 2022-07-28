@@ -19,8 +19,8 @@ exports.main = async (event, context) => {
       "sub_mch_id": "1626840615", // 商户号
       "total_fee": order.info.totalPrice * 100,
       "refund_fee":order.info.totalPrice * 100,
-      "envId": "jl-test-7gyjr92k7b1e9164", // 云环境id
-      "functionName": "payResult", // 支付回调云函数
+      "envId": "jl-prod-7gez695863508f63", // 云环境id
+      "functionName": "refundResult", // 支付回调云函数
       "nonce_str":createOutTradeNo(),
       "tradeType":"JSAPI",
       "out_refund_no":createOutTradeNo()

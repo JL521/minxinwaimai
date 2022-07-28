@@ -34,7 +34,7 @@ exports.main = async (event, context) => {
     "spbillCreateIp": "127.0.0.1",
     "subMchId": "1626840615", // 商户号
     "totalFee": order.info.totalPrice * 100,
-    "envId": "jl-test-7gyjr92k7b1e9164", // 云环境id
+    "envId": "jl-prod-7gez695863508f63", // 云环境id
     "functionName": "payResult", // 支付回调云函数
     "nonceStr":createOutTradeNo(),
     "tradeType":"JSAPI"
