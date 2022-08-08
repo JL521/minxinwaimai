@@ -36,6 +36,7 @@
     bind:change="valueChange"
     id="address"
     bind:focus="chooseAddress"
+    readonly
   >
   <view bindtap="chooseAddress" class="shoose-addres" slot="button">
       选择地址

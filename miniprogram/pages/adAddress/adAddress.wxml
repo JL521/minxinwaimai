@@ -29,9 +29,11 @@
     placeholder="请输入地址"
     type="textarea"
     autosize
+    readonly
     use-button-slot
     left-icon="location-o"
     bind:change="valueChange"
+    bind:focus="chooseAddress"
     id="address"
   >
   <view bindtap="chooseAddress" class="shoose-addres" slot="button">

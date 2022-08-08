@@ -30,6 +30,8 @@ Page({
     wx.chooseLocation({
       success (res) {
         that.data.addressInfo.address = res.name
+        that.data.addressInfo.latitude = res.latitude
+        that.data.addressInfo.longitude = res.longitude
         that.setData({
           addressInfo:that.data.addressInfo
         })

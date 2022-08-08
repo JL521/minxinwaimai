@@ -29,6 +29,9 @@ function request({
     wx.hideLoading();
  }).catch((e) => {
    console.log(e)
+   if(fail!=undefined&&fail!=null){
+    fail(resp.result)
+  }
    wx.hideLoading();
   });
 }
