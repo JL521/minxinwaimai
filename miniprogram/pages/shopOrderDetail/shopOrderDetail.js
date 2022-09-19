@@ -68,42 +68,6 @@ Page({
             setTimeout(function () {
               wx.navigateBack()
             }, 2000) 
-
-            var tme = new Date();  
-    var Y = tme.getFullYear();
-    var M = (tme.getMonth() + 1 < 10 ? '0' + (tme.getMonth() + 1) : tme.getMonth() + 1);
-    var D = tme.getDate() < 10 ?'0' + tme.getDate():tme.getDate();
-    var h = tme.getHours() < 10 ?'0' + tme.getHours():tme.getHours();
-    var m = tme.getMinutes()< 10 ?'0' + tme.getMinutes():tme.getMinutes();
-    var s = tme.getSeconds()< 10 ?'0' + tme.getSeconds():tme.getSeconds();
-    let tem1 = Y + '-' + M + '-' + D + ' ' + h + '-' + m + '-' + s
-    console.log("当前时间：" +tem1);  
-    let time10 = new Date().getTime()
-    wxCloudAPI.request({
-      showLoading:true,
-      name:'subscribeInterface',
-      data:{
-        subMsg:{
-          thing2:{
-            value:'民心外卖'
-          },
-          thing5:{
-            value:'商家已接单，请您耐心等待'
-          },
-          phrase7:{
-            value:'已接单'
-          },
-        },
-        templateId:'X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0',
-        openId:that.data.orderInfo.openId
-      },
-      success(resp){
-        wx.showToast({
-          title: '成功',
-        })
-      },
-    })
-
           }
         })
       },

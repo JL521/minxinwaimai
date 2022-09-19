@@ -25,6 +25,17 @@ exports.main = async (event, context) => {
         msg:'店铺休息中，请稍后再来~'
       }
     }
+
+    var date = new Date(order.info.expectTime)
+    console.log('订单时间======',date.getHours())
+    console.log('订单info======',order.info)
+   if (date.getHours()<9||date.getHours()>20) {
+    return {
+      code:-1,
+      data:null,
+      msg:'营业时间09:00~21:00~'
+    }
+   }
     
     let res = await db.collection('order').where({
       orderNum:order.orderNum

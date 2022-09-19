@@ -11,7 +11,7 @@ Page({
     addressInfo:{},
     message:'',
     orderNum:'',
-    minDate: new Date().getTime(),
+    minDate: new Date().getTime()+40*60*1000,
     maxDate: new Date(2099, 10, 1).getTime(),
     expectTime: new Date().getTime()+40*60*1000,
     show:false,
@@ -68,6 +68,16 @@ Page({
       })
       return 
     }
+
+    var date = new Date(this.data.expectTime)
+   if (date.getHours()<9||date.getHours()>20) {
+    wx.showToast({
+      title: '营业时间09:00~21:00',
+      icon:'none'
+    })
+    return 
+   }
+
     let that = this
     if (this.data.addressInfo.latitude&&this.data.addressInfo.longitude) {
       let dis = this.getMapDistance(this.data.addressInfo.latitude,this.data.addressInfo.longitude,getApp().globalData.busShopInfo.latitude,getApp().globalData.busShopInfo.longitude)
@@ -87,18 +97,8 @@ Page({
                 this.setData({
                   orderNum:this.getOrderCode()
                 })
-                wx.requestSubscribeMessage({
-                  tmplIds: ['X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0'],
-                  success(res){
-                    that.createOrder()
-                  },
-                  fail(){
-                    that.createOrder()
-                  }
-                })
-              }else{
-                this.createOrder()
               }
+                that.createOrder()
             }
           },
         });
@@ -116,19 +116,8 @@ Page({
       this.setData({
         orderNum:this.getOrderCode()
       })
-      wx.requestSubscribeMessage({
-        tmplIds: ['X_ceO6xTGcEUJVOvluc5wNGoZK-X1cagw871PM8riK0'],
-        success(res){
-          that.createOrder()
-        },
-        fail(){
-          that.createOrder()
-        }
-      })
-    }else{
-      this.createOrder()
     }
-    
+      this.createOrder()
   },
 
   createOrder(){
