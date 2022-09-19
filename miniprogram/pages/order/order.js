@@ -11,7 +11,7 @@ Page({
     addressInfo:{},
     message:'',
     orderNum:'',
-    minDate: new Date().getTime()+40*60*1000,
+    minDate: new Date().getTime(),
     maxDate: new Date(2099, 10, 1).getTime(),
     expectTime: new Date().getTime()+40*60*1000,
     show:false,

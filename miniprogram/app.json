@@ -60,6 +60,9 @@
       "desc": "获取当前位置信息，填写收货地址"
     }
   },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index"
   },
